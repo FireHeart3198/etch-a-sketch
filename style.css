@@ -1,0 +1,20 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+}
+
+.square {
+   height: 50px;
+   width: 50px;
+   border: solid black 2px;
+   flex: 0 0 auto;
+}
