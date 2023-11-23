@@ -4,6 +4,7 @@ sizeButton.addEventListener('click', function c() {
     gridLength = prompt("How many squares?");
     sizeGrid(gridLength);
     createGrid(gridLength)
+    startDrawing();
 })
 
 function sizeGrid (gridLength) {
@@ -12,12 +13,9 @@ function sizeGrid (gridLength) {
         const previousStyle = document.querySelector('style')
         previousStyle.remove();
     }
-    console.log(gridLength)
     squareSize = 960/parseInt(gridLength);
-    console.log(squareSize)
     const style = document.createElement('style');
     style.textContent = `.square {height: ${squareSize}px; width: ${squareSize}px;}`;
-    console.log(style)
     head.appendChild(style);
 }
 
@@ -41,13 +39,15 @@ function createGrid (gridLength) {
     }
 }
 
-const allSquares = document.querySelectorAll('.square')
 
-allSquares.forEach(square => {
-    square.addEventListener('mouseenter', function (e) {
-        changeColour(e.target)
+function startDrawing() {
+    const allSquares = document.querySelectorAll('.square')
+    allSquares.forEach(square => {
+        square.addEventListener('mouseenter', function (e) {
+            changeColour(e.target)
+        })
     })
-})
+}
 
 
 function changeColour (currentSquare) {
