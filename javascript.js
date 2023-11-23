@@ -1,3 +1,7 @@
+const sizeButton = document.querySelector('.adjust-size')
+
+sizeButton.addEventListener('click', () => gridLength = prompt("How many squares?"))
+
 const container = document.querySelector('.container');
 
 
@@ -21,3 +25,12 @@ allSquares.forEach(square => {
 function changeColour (currentSquare) {
     currentSquare.classList.toggle('red')
 }
+
+
+// On button press show prompt
+    // event listener click
+// Info from prompt put into sizing calculation
+    // gridLength into function 
+    // 960/grid Length (parsed into int)
+    // css style height and width with resulting info
+// sizing calculation put into for loop
