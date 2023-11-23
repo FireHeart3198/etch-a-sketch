@@ -6,13 +6,20 @@ sizeButton.addEventListener('click', function c() {
 })
 
 function sizeGrid (gridLength) {
+    const head = document.querySelector('head')
+    if (document.querySelector('style') !== null) {
+        const previousStyle = document.querySelector('style')
+        console.log(previousStyle)
+        previousStyle.remove();
+        console.log(previousStyle)
+    }
     console.log(gridLength)
     squareSize = 960/parseInt(gridLength);
     console.log(squareSize)
     const style = document.createElement('style');
     style.textContent = `.square {height: ${squareSize}px; width: ${squareSize}px;}`;
     console.log(style)
-    document.head.appendChild(style);
+    head.appendChild(style);
 }
 
 const container = document.querySelector('.container');
