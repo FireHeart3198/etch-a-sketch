@@ -1,6 +1,19 @@
-const sizeButton = document.querySelector('.adjust-size')
+const sizeButton = document.querySelector('.adjust-size');
 
-sizeButton.addEventListener('click', () => gridLength = prompt("How many squares?"))
+sizeButton.addEventListener('click', function c() {
+    gridLength = prompt("How many squares?");
+    sizeGrid(gridLength);
+})
+
+function sizeGrid (gridLength) {
+    console.log(gridLength)
+    squareSize = 960/parseInt(gridLength);
+    console.log(squareSize)
+    const style = document.createElement('style');
+    style.textContent = `.square {height: ${squareSize}px; width: ${squareSize}px;}`;
+    console.log(style)
+    document.head.appendChild(style);
+}
 
 const container = document.querySelector('.container');
 
