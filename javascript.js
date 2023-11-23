@@ -8,3 +8,16 @@ for (let i = 1; i <= 16; i++) {
         container.appendChild(square);
     }
 }
+
+const allSquares = document.querySelectorAll('.square')
+
+allSquares.forEach(square => {
+    square.addEventListener('mouseenter', function (e) {
+        changeColour(e.target)
+    })
+})
+
+
+function changeColour (currentSquare) {
+    currentSquare.classList.toggle('red')
+}

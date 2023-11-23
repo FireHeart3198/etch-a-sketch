@@ -18,3 +18,7 @@ html {
    border: solid black 2px;
    flex: 0 0 auto;
 }
+
+.red {
+    background-color: red;
+}
