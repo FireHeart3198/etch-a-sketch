@@ -1,11 +1,36 @@
 const sizeButton = document.querySelector('.adjust-size');
 
 sizeButton.addEventListener('click', function c() {
-    gridLength = prompt("How many squares?");
+    const checkLength = prompt("How many squares?");
+    console.log(checkLength);
+    console.log(typeof parseInt(checkLength));
+    maxSquares(checkLength);
     sizeGrid(gridLength);
     createGrid(gridLength)
-    startDrawing();
+    startDrawing(gridLength);
 })
+
+function maxSquares (checkLength) {
+    if (checkLength > 100) {
+        for (let i = 0; i < 3; i++) {
+            const newGridLength = prompt("Less than 100 please");
+            if (newGridLength < 100) {
+                return gridLength = newGridLength;
+            }
+        }
+        return alert("Sorry, this etch-a-sketch is no longer available")
+    } else if (isNaN(parseInt(checkLength))) {
+        for (let i = 0; i < 3; i++) {
+            const newGridLength = prompt("Number please");
+            if (!!(isNaN(parseInt(checkLength)))) {
+                return gridLength = newGridLength;
+            }
+        }
+        return alert("Sorry, this etch-a-sketch is no longer available")
+    } else {
+        return gridLength = checkLength;
+    }
+}
 
 function sizeGrid (gridLength) {
     const head = document.querySelector('head')
@@ -20,7 +45,6 @@ function sizeGrid (gridLength) {
 }
 
 const container = document.querySelector('.container');
-
 
 function createGrid (gridLength) {
     if (document.querySelector('.square') !== null) {
@@ -39,7 +63,6 @@ function createGrid (gridLength) {
     }
 }
 
-
 function startDrawing() {
     const allSquares = document.querySelectorAll('.square')
     allSquares.forEach(square => {
@@ -49,16 +72,6 @@ function startDrawing() {
     })
 }
 
-
 function changeColour (currentSquare) {
     currentSquare.classList.toggle('red')
 }
-
-
-// On button press show prompt
-    // event listener click
-// Info from prompt put into sizing calculation
-    // gridLength into function 
-    // 960/grid Length (parsed into int)
-    // css style height and width with resulting info
-// sizing calculation put into for loop
