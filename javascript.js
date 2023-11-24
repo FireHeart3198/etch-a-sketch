@@ -2,8 +2,6 @@ const sizeButton = document.querySelector('.adjust-size');
 
 sizeButton.addEventListener('click', function c() {
     const checkLength = prompt("How many squares?");
-    console.log(checkLength);
-    console.log(typeof parseInt(checkLength));
     maxSquares(checkLength);
     sizeGrid(gridLength);
     createGrid(gridLength)
@@ -74,4 +72,74 @@ function startDrawing() {
 
 function changeColour (currentSquare) {
     currentSquare.classList.toggle('red')
+}
+
+const randomColourButton = document.querySelector('.random-colour')
+
+randomColourButton.addEventListener('click', function c() {
+    const checkLength = prompt("How many squares?");
+    maxSquares(checkLength);
+    sizeGrid(gridLength);
+    createGrid(gridLength)
+    startRandomColour(gridLength);
+})
+
+function startRandomColour () {
+    const allSquares = document.querySelectorAll('.square')
+    allSquares.forEach(square => {
+        square.addEventListener('mouseenter', function (e) {
+            randomiseColour(e.target)
+        })
+    })
+}
+
+function randomiseColour (currentSquare) {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+    currentSquare.style.cssText = `background-color:rgb(${red},${green},${blue})`
+}
+
+const changeToBlackButton = document.querySelector('.change-to-black')
+
+changeToBlackButton.addEventListener('click', function c() {
+    const checkLength = prompt("How many squares?");
+    maxSquares(checkLength);
+    sizeGrid(gridLength);
+    createGrid(gridLength)
+    changeToBlack();
+})
+
+function changeToBlack() {
+    const allSquares = document.querySelectorAll('.square')
+    let initial = 0;
+    let count = 0;
+    allSquares.forEach((square) => {
+        square.addEventListener('mouseenter', function (e) {
+            if (count === 10) {
+                changeColourPink(e.target);
+            }
+            else if (initial === 1) {
+                changeColourRed(e.target);
+                count += 1;
+            }
+            else if (initial === 0) {
+                changeColourBlue(e.target);
+                initial = 1;
+            }
+        })
+    })
+}
+
+function changeColourPink (currentSquare) {
+    currentSquare.classList.toggle('pink')
+}
+
+
+function changeColourRed (currentSquare) {
+    currentSquare.classList.toggle('red')
+}
+
+function changeColourBlue (currentSquare) {
+    currentSquare.classList.toggle('blue')
 }
