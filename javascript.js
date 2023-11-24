@@ -112,20 +112,13 @@ changeToBlackButton.addEventListener('click', function () {
 
 function changeToBlack() {
     const allSquares = document.querySelectorAll('.square')
-    let initial = 0;
-    let count = 1;
+    let count = 0;
     const hue = Math.floor(Math.random() * 360);
     allSquares.forEach((square) => {
         square.addEventListener('mouseenter', function (e) {
             const square = e.target
-            if (initial === 1) {
-                square.style.cssText = `background-color: hsl(${hue}, 100%, ${70-(8*count)}%)`
-                count += 1;
-            }
-            else if (initial === 0) {
-                square.style.cssText = `background-color: hsl(${hue}, 100%, 70%);`
-                initial = 1;
-            }
+            square.style.cssText = `background-color: hsl(${hue}, 100%, ${70-(8*count)}%)`
+            count += 1;
         })
     })
 }
