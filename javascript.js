@@ -102,7 +102,7 @@ function randomiseColour (currentSquare) {
 
 const changeToBlackButton = document.querySelector('.change-to-black')
 
-changeToBlackButton.addEventListener('click', function c() {
+changeToBlackButton.addEventListener('click', function () {
     const checkLength = prompt("How many squares?");
     maxSquares(checkLength);
     sizeGrid(gridLength);
@@ -113,33 +113,19 @@ changeToBlackButton.addEventListener('click', function c() {
 function changeToBlack() {
     const allSquares = document.querySelectorAll('.square')
     let initial = 0;
-    let count = 0;
+    let count = 1;
+    const hue = Math.floor(Math.random() * 360);
     allSquares.forEach((square) => {
         square.addEventListener('mouseenter', function (e) {
-            if (count === 10) {
-                changeColourPink(e.target);
-            }
-            else if (initial === 1) {
-                changeColourRed(e.target);
+            const square = e.target
+            if (initial === 1) {
+                square.style.cssText = `background-color: hsl(${hue}, 100%, ${70-(8*count)}%)`
                 count += 1;
             }
             else if (initial === 0) {
-                changeColourBlue(e.target);
+                square.style.cssText = `background-color: hsl(${hue}, 100%, 70%);`
                 initial = 1;
             }
         })
     })
-}
-
-function changeColourPink (currentSquare) {
-    currentSquare.classList.toggle('pink')
-}
-
-
-function changeColourRed (currentSquare) {
-    currentSquare.classList.toggle('red')
-}
-
-function changeColourBlue (currentSquare) {
-    currentSquare.classList.toggle('blue')
 }
