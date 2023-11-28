@@ -3,30 +3,33 @@ const buttons = document.querySelector('.button-container');
 buttons.addEventListener('click', function (e) {
     const checkLength = prompt("How many squares?");
     maxSquares(checkLength);
+    if (typeof endSketch !== "undefined" && endSketch === 1) {
+        endSketch = 0
+        return alert("Sorry, this etch-a-sketch is no longer available")
+    }
     sizeGrid(gridLength);
     createGrid(gridLength)
     startDrawing(e);
 })
 
 function maxSquares (checkLength) {
-    if (checkLength > 100) {
-        for (let i = 0; i < 3; i++) {
-            const newGridLength = prompt("Less than 100 please");
-            if (newGridLength < 100) {
-                return gridLength = newGridLength;
-            }
+    let i = 0;
+    while ((checkLength > 100 || isNaN(parseInt(checkLength))) && i < 2) {
+        let newGridLength
+        if (checkLength === null) {
+            return endSketch = 1;
+        } else if (checkLength > 100) {
+            newGridLength = prompt("Less than 100 please");
+        } else if (isNaN(parseInt(checkLength))) {
+            newGridLength = prompt("Number please");
         }
-        return alert("Sorry, this etch-a-sketch is no longer available")
-    } else if (isNaN(parseInt(checkLength))) {
-        for (let i = 0; i < 3; i++) {
-            const newGridLength = prompt("Number please");
-            if (!!(isNaN(parseInt(checkLength)))) {
-                return gridLength = newGridLength;
-            }
-        }
-        return alert("Sorry, this etch-a-sketch is no longer available")
+        i++;
+        checkLength = newGridLength;
+    }
+    if (checkLength > 100 || isNaN(parseInt(checkLength))) {
+        return endSketch = 1;
     } else {
-        return gridLength = checkLength;
+        return gridLength = checkLength
     }
 }
 
