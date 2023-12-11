@@ -11,11 +11,11 @@ html {
     flex-wrap: wrap;
     max-width: 960px;
     min-width: 960px;
+    max-height: 960px;
+    min-height: 960px;
 }
 
 .square {
-   /* height: 50px; set this property in javascript */
-   /* width: 50px; set this property in javascript (16 squares = 60 for total of 960) */
    border: solid black 2px;
    flex: 0 0 auto;
 }
